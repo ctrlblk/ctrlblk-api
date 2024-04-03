@@ -10,7 +10,7 @@ node_compat = true
 ADREPORT_WORKER_DOMAIN = "api.ctrlblk.dev"
 
 # GitHub Repository in which issues to create
-GITHUB_REPO = "ctrlblk/ctrlblk-filters"
+GITHUB_REPO = "ctrlblk/ctrlblk-filters-dev"
 
 UPDATE_URL = "https://ctrlblk.dev/update"
 
