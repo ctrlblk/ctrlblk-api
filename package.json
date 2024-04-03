@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "wrangler": "^3.41.0"
+  },
+  "dependencies": {
+    "hono": "^4.0.2",
+    "uuid": "^9.0.1",
+    "semver": "^7.5.4"
+  }
+}

@@ -1,0 +1,8 @@
+# generated files
+/dist/
+
+# dependencies
+node_modules/
+
+# hidden files
+.*

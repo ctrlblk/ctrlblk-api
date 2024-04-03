@@ -1,0 +1,28 @@
+name = "api-ctrlblk-com"
+main = "src/index.js"
+compatibility_date = "2024-03-29"
+
+workers_dev = false
+node_compat = true
+
+[vars]
+# Public domain AdReport worker
+ADREPORT_WORKER_DOMAIN = "api.ctrlblk.com"
+
+# GitHub Repository in which issues to create
+GITHUB_REPO = "ctrlblk/ctrlblk-filters"
+
+UPDATE_URL = "https://ctrlblk.com/update"
+
+[[r2_buckets]]
+# Bucket that contains incoming reports
+binding = "IncomingBucket"
+bucket_name = "reports-ctrlblk-com"
+
+[[kv_namespaces]]
+binding = "AdReportsKV"
+id = "f6c2165687e04f99aed602a2581d8d51" # reports-ctrlblk-com
+
+[[routes]]
+pattern = "api.ctrlblk.com"
+custom_domain = true
