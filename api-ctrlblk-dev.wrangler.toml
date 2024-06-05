@@ -19,6 +19,11 @@ UPDATE_URL = "https://ctrlblk.dev/update"
 binding = "IncomingBucket"
 bucket_name = "reports-ctrlblk-dev"
 
+[[r2_buckets]]
+# Bucket that contains crawler results
+binding = "CrawlResultBucket"
+bucket_name = "crawlresults-ctrlblk-dev"
+
 [[kv_namespaces]]
 binding = "AdReportsKV"
 id = "25ee4398fd9041dbb5cd629037a5cfb8" # reports-ctrlblk-dev

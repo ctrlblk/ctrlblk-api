@@ -1,9 +1,11 @@
 import { Hono } from "hono"
 import { cors } from "hono/cors"
 
-import adreports from './adReports'
+import { createAdReportEndpoint } from './adReports'
 
 import updatePage from './updatePage'
+
+import { createR2Endpoint } from './signedR2Bucket'
 
 const app = new Hono()
 
@@ -21,14 +23,22 @@ async function corsWrapper(c, next) {
 
 app.use('*', corsWrapper)
 
-app.get('/adreports/sign', adreports.sign);
-
-app.post('/adreports/:uuid', adreports.upload);
-
-app.get('/adreports/:uuid', adreports.get);
-
-app.get('/adreports/:uuid/screenshot', adreports.getScreenshot);
-
 app.post('/updatePageUrl', updatePage.generateUrl);
+
+createAdReportEndpoint(app, {
+    // Bucket where uploaded objetcs get stored
+    bucketName: "IncomingBucket",
+    // path prefix used in url that gets signed
+    // e.g. api.ctrlblk.dev|com/adreports/UUID
+    pathPrefix: "adreports",
+});
+
+createR2Endpoint(app, {
+    // Bucket where uploaded objetcs get stored
+    bucketName: "CrawlResultBucket",
+    // path prefix used in url that gets signed
+    // e.g. api.ctrlblk.dev|com/crawlresult/UUID
+    pathPrefix: "crawlresult",
+});
 
 export default app
