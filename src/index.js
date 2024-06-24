@@ -2,10 +2,10 @@ import { Hono } from "hono"
 import { cors } from "hono/cors"
 
 import { createAdReportEndpoint } from './adReports'
+import { createCrawlResultEndpoint} from './crawlresult'
 
 import updatePage from './updatePage'
 
-import { createR2Endpoint } from './signedR2Bucket'
 
 const app = new Hono()
 
@@ -33,7 +33,7 @@ createAdReportEndpoint(app, {
     pathPrefix: "adreports",
 });
 
-createR2Endpoint(app, {
+createCrawlResultEndpoint(app, {
     // Bucket where uploaded objetcs get stored
     bucketName: "CrawlResultBucket",
     // path prefix used in url that gets signed
